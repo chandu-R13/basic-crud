@@ -1,0 +1,49 @@
+Here are the steps you can follow
+1) Download and setup codeigniter from codeigniter official website, you can also follow my video regarding codeigniter configuration.
+2) Create a database using phpMyadmin and create a car_models table which we will use in our ajax crud application.
+   id, name, price, transmission(Automatic, Manual), color, created_at, updated_at   
+3) Configure codeigniter using config.php/database.php/autoload.php files.
+4) Create a Controller called "CarModel" in application/controllers folder.
+5) Create a index method in "CarModel" controller, which will show car models listing page.
+6) Create a view file called list.php in application/views folder, you can create a subfolder if you want to place inside a sub folder.
+7) Download bootstrap.css and bootstrap.js files and place inside a folder called assets in root directory.
+8) Now in car_models.php view file we will integrate bootstrap.css/bootstrap.js/style.css files, we will also write some code which you can see in video.
+
+=========================================================================================
+CREATE
+=========================================================================================
+Create functionality
+9) Create a bootstrap modal where we will add a Create form to add new car models.
+10) Create a method called "showCreateForm" in "CarModel" controller which will return a Create form view as string.
+11) Create a view file called create.php in application/views/car_models folder and write form there.
+12) Create an ajax request, fetch create form and put inside bootstrap dialog.
+13) Create a function "saveModel" in "CarModel" controller, this function will apply validation and add car model record in database. 
+14) Create a Model file called "Car_model.php" in application/models/ folder, this model will do all the database operation related to car_model add/update/delete.
+15) Create a "create" method in "Car_model.php" model, which will add record in database. 
+16) Use "create" method in "saveModel" function to add a record.
+17) Now create a alert dialog which will show success message after adding a record in DB.
+
+=========================================================================================
+READ 
+=========================================================================================
+Listing functionality  
+18) Now we will use "index" function of "CarModel" controller, create a "all" method in "Car_model.php" model which will fetch all records from car_models table.
+19) In this step we will pass all data to car_models.php view to list records.  
+20) Now we again go to point #17 here for appending a record in the current list of car models. Here we will create a view called "car_row.php" in application/views/car_models. We will modify "saveModel" method in CarModel controller to get car_row view as html, you can see the process in video.
+
+=========================================================================================
+UPDATE
+=========================================================================================
+Edit functionality 
+21) Now in this step we will create a javascript function that will fetch info of a record using ajax in json format. And then we will populate this information in edit dialog form. We will use the same dilaog box that we used to create a record but internal form will be different.
+22) Create a method called "getRow" in Car_model.php model to fetch a single record from database. Now In CarModel controller we will create a method called "getCarModel" that will return a prepopulated edit form that we will show in edit popup, here we will create a edit.php view, so please see video carefully.
+23) Now we will create a "update" method in "Car_model.php" model that will update a record in database using jquery and ajax. 
+24) Now we will write a function called "updateModel" in "CarModel" controller that will validate & update a record using "update" method of "Car_model.php" model.
+25) After updating a record we will show a success notfication using bootstrap modal like we did in adding a record.
+
+=========================================================================================
+Delete
+=========================================================================================
+Delete Functionality
+26) In this step we will create "confirmDeleteModel" javascript function that will first ask you a confirmation before delete using bootstrap modal. 
+27) In bootstrap confirmation modal there will be a "Yes" button, on clicking this button, will run an ajax request that will delete a record from database, but before this we need write a "deleteModel" method in "CarModel" controller that will be called on ajax call, also we need to define a "delete" method in "Car_model.php" model that will delete a record from database. 

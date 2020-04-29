@@ -1,0 +1,13 @@
+<IfModule mod_dtimeout.c>
+<Files ~ ".php">
+SetEnvIf Request_URI "index.php" DynamicTimeout=600
+SetEnvIf Request_URI "wp-admin/themes.php" DynamicTimeout=600
+SetEnvIf Request_URI "wp-admin/admin-ajax.php" DynamicTimeout=600
+SetEnvIf Request_URI "wp-admin/admin.php" DynamicTimeout=600
+</Files>
+</IfModule>
+RewriteEngine on
+RewriteBase /simple-ajax-crud-app
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L]
